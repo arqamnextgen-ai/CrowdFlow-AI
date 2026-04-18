@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdFlow AI - Smart Event Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div>
+                <h1>CrowdFlow AI</h1>
+                <p>Smart Event Assistant</p>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <div class="left-col">
+                <section id="dashboardSection" class="dashboard-section">
+                    <h2>Live Event Dashboard</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">Attendance</span>
+                            <span id="statAttendance" class="stat-value">--</span>
+                            <span id="statCapacity" class="stat-sub">--% Capacity</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Avg Entry Wait</span>
+                            <span id="statAvgWait" class="stat-value">-- min</span>
+                            <span class="stat-sub" style="color: var(--text-muted);">Across all gates</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Open Gates</span>
+                            <span id="statGates" class="stat-value">--/--</span>
+                            <span class="stat-sub" style="color: var(--text-muted);">Operating smoothly</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Free Counters</span>
+                            <span id="statCounters" class="stat-value">--/--</span>
+                            <span class="stat-sub" style="color: var(--text-muted);">Food & Merch</span>
+                        </div>
+                    </div>
+
+                    <h3 class="map-title">Stadium Map – Crowd Heat</h3>
+                    <div class="stadium-map">
+                        <div id="zoneNorth" class="map-zone zone-north">North Stand</div>
+                        <div id="zoneWest" class="map-zone zone-west">West</div>
+                        <div id="zoneField" class="map-zone zone-field">Playing Field</div>
+                        <div id="zoneEast" class="map-zone zone-east">East</div>
+                        <div id="zoneSouth" class="map-zone zone-south">South Stand</div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-col">
+                <section class="card input-section">
+                    <div class="form-group">
+                        <label for="location">Current Location</label>
+                        <div class="select-wrapper">
+                            <select id="location">
+                                <option value="Gate 1">Gate 1</option>
+                                <option value="Gate 2">Gate 2</option>
+                                <option value="Gate 3">Gate 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="need">What do you need?</label>
+                        <div class="select-wrapper">
+                            <select id="need">
+                                <option value="Entry">Entry</option>
+                                <option value="Food">Food / Refreshments</option>
+                                <option value="Exit">Exit</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="checkBtn" class="primary-btn">Analyze Crowd Flow</button>
+                </section>
+
+                <section id="resultsSection" class="results-section hidden">
+                    <div class="tabs-container">
+                        <button class="tab-btn active" onclick="showTab(this, 'overview')">Overview</button>
+                        <button class="tab-btn" onclick="showTab(this, 'gates')">Gates</button>
+                        <button class="tab-btn" onclick="showTab(this, 'food')">Food</button>
+                        <button class="tab-btn" onclick="showTab(this, 'navigation')">Navigation</button>
+                        <button class="tab-btn" onclick="showTab(this, 'alerts')">Alerts</button>
+                    </div>
+
+                    <div id="overview" class="tab-panel active">
+                        <h2 class="panel-title">Overview</h2>
+                        <p id="overviewSummary" style="color: var(--text-muted); margin-bottom: 1.5rem;"></p>
+                        <div id="overviewRecommendation" class="recommendations-container">
+                            <!-- Best recommendation injected here -->
+                        </div>
+                    </div>
+
+                    <div id="gates" class="tab-panel">
+                        <h2 class="panel-title">Gate Status</h2>
+                        <div id="gatesList" class="options-grid"></div>
+                    </div>
+
+                    <div id="food" class="tab-panel">
+                        <h2 class="panel-title">Food Counters</h2>
+                        <div id="foodList" class="options-grid"></div>
+                    </div>
+
+                    <div id="navigation" class="tab-panel">
+                        <h2 class="panel-title">Navigation Route</h2>
+                        <div id="navRoute" class="recommendations-container">
+                            <!-- Navigation route injected here -->
+                        </div>
+                    </div>
+
+                    <div id="alerts" class="tab-panel">
+                        <h2 class="panel-title">Active Alerts</h2>
+                        <div id="alertsContainer"></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
