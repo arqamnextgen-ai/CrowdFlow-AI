@@ -1,5 +1,3 @@
-# CrowdFlow-AI
-
 # CrowdFlow AI – Smart Event Assistant
 
 ## Problem
